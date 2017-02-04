@@ -1,0 +1,19 @@
+{
+  "name": "cookie_clicker",
+  "version": "0.0.1",
+  "description": "Multiplayer Cookie Clicker",
+  "main": "server.js",
+  "scripts": {
+    "test": "console.log('hey')",
+    "start":"node server.js"
+  },
+  "author": "Perelman",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yourfriendlyneighbor/cookie_clicker"
+  }
+}

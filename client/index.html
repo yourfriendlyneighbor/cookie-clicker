@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IO Chat</title>
+    <!--css libs-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.9.0/css/alertify.min.css"/>
+    <!--css-->
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+
+
+
+    <!--App-->
+
+    <div class="container">
+      <div id="userFormArea" class="row">
+        <div class="col-md-4 col-md-offset-8">
+          <form id="userForm">
+            <div class="form-group">
+              <label for="Username">Enter Username:</label>
+              <textarea name="Username" class="form-control" id="username"></textarea>
+              <br />
+              <input type="submit" class="btn btn-primary" value="Play">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="gameArea" class="row">
+        <div class="col-md-4">
+          <h2>Amount of cookies : <span id="cookies">0</span></h2>
+          <img src="img/PerfectCookie.png" id="cookie" class="img-responsive">
+        </div>
+        <div class="col-md-4 col-md-offset-4">
+          <h2>Shop</h2>
+          <hr />
+          <div class="row">
+            <div class="col-md-12 bg-primary bg">
+              <div class="col-md-6">
+                <p><span id="upgrade_1_price"></span> Cookies</p>
+              </div>
+              <div class="col-md-6">
+                <button type="button" class="btn btn-warning" id="upgrade1">Buy Upgrade 1</button>
+              </div>
+            </div>
+            <div class="col-md-12 bg-primary bg">
+              <div class="col-md-6">
+                <p>50 Cookies</p>
+              </div>
+              <div class="col-md-6">
+                <button type="button" class="btn btn-warning" id="upgrade2">Buy Upgrade 2</button>
+              </div>
+            </div>
+            <div class="col-md-12 bg-primary bg">
+              <div class="col-md-6">
+                <p>75 Cookies</p>
+              </div>
+              <div class="col-md-6">
+                <button type="button" class="btn btn-warning" id="upgrade3">Buy Upgrade 3</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!--Script Libs-->
+    <script src="https://cdn.jsdelivr.net/alertifyjs/1.9.0/alertify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.min.js" charset="utf-8"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous">
+    </script>
+    <!--Scripts-->
+    <script src="js/main.js" charset="utf-8"></script>
+  </body>
+</html>
