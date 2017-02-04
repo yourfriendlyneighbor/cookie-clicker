@@ -7,6 +7,7 @@ connections = [];
 let clicks = 0;
 let upgrade_1_price = 25;
 let upgrade_1_amount = 0;
+let cps = 0;
 
 const port = process.env.PORT || 3001;
 server.listen(port);
@@ -33,7 +34,8 @@ io.sockets.on('connection', function(socket){
     callback(true);
     socket.username = data;
     users.push(socket.username);
-    updateUsernames()
+    updateUsernames();
+    io.emit('get username', socket.username);
   });
 
   function updateUsernames(){
@@ -44,12 +46,15 @@ io.sockets.on('connection', function(socket){
     clicks = clicks + data;
     sendClicks()
   });
-
+  socket.on('get username',function(){
+    socket.emit('recieve username', socket.username)
+  });
+  socket.on('get username 4 click',function(){
+    socket.emit('get username 4 click', socket.username)
+  });
   function sendClicks(){
     io.emit('get clicks', clicks);
-    io.emit('get userClicked', socket.username)
   }
-
   socket.on('remove cookies', function(data){
     clicks = clicks - data;
     io.emit('get cookies', clicks);
@@ -57,16 +62,22 @@ io.sockets.on('connection', function(socket){
   socket.on('upgrade 1 price', function(data){
     upgrade_1_price = data;
     io.emit('get upgrade 1 price', upgrade_1_price)
-  })
+  });
   socket.on('upgrade 1 amount', function(data){
     upgrade_1_amount = data;
     io.emit('get upgrade 1 amount', upgrade_1_amount)
-  })
+  });
+  socket.on('cps', function(data){
+    cps = data;
+    io.emit('get cps', cps)
+  });
+
   function startUp(){
     sendClicks();
     io.emit('get cookies', clicks);
     io.emit('get upgrade 1 price', upgrade_1_price);
-    io.emit('get upgrade 1 amount', upgrade_1_amount)
+    io.emit('get upgrade 1 amount', upgrade_1_amount);
+    io.emit('get cps', cps)
   }
   startUp()
 })
