@@ -47,10 +47,10 @@ io.sockets.on('connection', function(socket){
     sendClicks()
   });
   socket.on('get username',function(){
-    socket.emit('recieve username', socket.username)
+    io.emit('recieve username', socket.username)
   });
   socket.on('get username 4 click',function(){
-    socket.emit('get username 4 click', socket.username)
+    io.emit('get username 4 click', socket.username)
   });
   function sendClicks(){
     io.emit('get clicks', clicks);

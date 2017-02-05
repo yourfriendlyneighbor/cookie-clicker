@@ -17,7 +17,8 @@ $(function(){
   let upgrade_1_price = 25
   let upgrade_1_amount = 0;
   let cps = 0;
-  $("#upgrade_1_price").html(upgrade_1_price)
+  $("#upgrade_1_price").html(upgrade_1_price);
+  $("#cps").html(cps)
   $usersOnline.hide();
   $gameArea.hide();
   $userForm.submit(function(e){
@@ -75,6 +76,7 @@ $(function(){
   });
   socket.on('get cps', function(data){
     cps = data;
+    $("#cps").html(cps)
   });
     setInterval(function () {
       cookies = cookies + cps;
