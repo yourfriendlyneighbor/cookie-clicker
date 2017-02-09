@@ -90,6 +90,6 @@ io.sockets.on('connection', function(socket){
   socket.on('send message', function(data){
     messages.push(data)
     console.log(messages);
-    io.emit('new message', {msg: data, user: socket.username || "guest"})
+    io.emit('new message', {msg: data, user: socket.username || "Guest: "})
   })
 })
