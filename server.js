@@ -81,6 +81,7 @@ io.sockets.on('connection', function(socket){
     io.emit('get cps', cps)
   }
   startUp()
+  //Chat
   function updateUsernames(){
     console.log(users)
     io.emit('get users', users);
@@ -89,6 +90,6 @@ io.sockets.on('connection', function(socket){
   socket.on('send message', function(data){
     messages.push(data)
     console.log(messages);
-    io.emit('new message', {msg: data, user: socket.username})
+    io.emit('new message', {msg: data, user: socket.username || "guest"})
   })
 })
