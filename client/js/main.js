@@ -84,4 +84,24 @@ $(function(){
       $cookies.html(cookies);
       console.log(cookies);
     }, 1000);
+
+    /* Chat */
+    $("#messageForm").submit(function(e){
+      e.preventDefault();
+      socket.emit('send message', $("#message").val());
+      $("#message").val(" ");
+    })
+    socket.on('new message', function(data){
+      console.log(data.msg);
+      $("#chat").append('<div class="well"><strong>'+data.user + ': </strong>'+data.msg+'</div>');
+    });
+    socket.on('get users', function(data){
+      console.log(data)
+      var html = '';
+      for (var i = 0; i < data.length; i++) {
+        html += '<li class="list-group-item">'+data[i]+'</li>'
+      }
+      $("#users").html(html)
+    })
+
 })

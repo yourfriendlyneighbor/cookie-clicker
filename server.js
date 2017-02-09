@@ -1,15 +1,16 @@
-const express= require('express');
+const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io').listen(server);
 users = [];
 connections = [];
+messages = [];
 let clicks = 0;
 let upgrade_1_price = 25;
 let upgrade_1_amount = 0;
 let cps = 0;
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 server.listen(port);
 console.log("Server running...");
 
@@ -80,4 +81,14 @@ io.sockets.on('connection', function(socket){
     io.emit('get cps', cps)
   }
   startUp()
+  function updateUsernames(){
+    console.log(users)
+    io.emit('get users', users);
+  }
+  //Send Message
+  socket.on('send message', function(data){
+    messages.push(data)
+    console.log(messages);
+    io.emit('new message', {msg: data, user: socket.username})
+  })
 })
