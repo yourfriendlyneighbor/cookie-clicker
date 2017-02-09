@@ -90,6 +90,7 @@ io.sockets.on('connection', function(socket){
   socket.on('send message', function(data){
     messages.push(data)
     console.log(messages);
-    io.emit('new message', {msg: data, user: socket.username || "Guest: "})
+    var randomGuest = Math.floor(Math.random() * (10000 - 1) + 1);
+    io.emit('new message', {msg: data, user: socket.username || "Guest " + randomGuest})
   })
 })
